@@ -18,6 +18,7 @@ class Comment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        //showImage를 bool값으로 넣는 이유는 댓글에서 프로필 사진 없이 코멘트만 달리는 경우도 있기 때문임 지금인스타에는 모두 프로필 보여주긴하지만..
         if(showImage)
           RoundedAvatar(size: 24),
         if(showImage)
@@ -49,6 +50,7 @@ class Comment extends StatelessWidget {
                   ]
               ),
             ),
+            //Comment위젯 생성시 DateTime데이터가 있어야 보여줌
             if(dateTime != null)
               Text(
                 dateTime.toIso8601String(),

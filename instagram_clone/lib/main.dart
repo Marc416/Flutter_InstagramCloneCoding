@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/material_white.dart';
-
 import 'home_page.dart';
 
 void main() {

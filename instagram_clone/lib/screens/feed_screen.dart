@@ -2,11 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/widgets/post.dart';
 
+//피드홈
 class FeedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Header
+      // 쿠퍼티노네비바는 IOS UI를 가져다 쓴 위젯임.
       appBar: CupertinoNavigationBar(
+        //leading, middle, trailing -> 왼쪽, 중간, 끝부분이라는 위치를 알려
         leading: IconButton(
           onPressed: null,
           icon: Icon(
@@ -18,7 +22,6 @@ class FeedScreen extends StatelessWidget {
           'instagram',
           style: TextStyle(fontFamily: 'VeganStyle', color: Colors.black),
         ),
-//      메테리얼의 차일드와 같은거같음
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -42,8 +45,8 @@ class FeedScreen extends StatelessWidget {
         ),
 
       ),
-//    리스트안에 아이템이 30개있다는거
-//    포스트들
+
+//    피드뷰에서 포스팅을 불러온다
       body: ListView.builder(
         itemBuilder: feedListBuilder,
         itemCount: 30,
