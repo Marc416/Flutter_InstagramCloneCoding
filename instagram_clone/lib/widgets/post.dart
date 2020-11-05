@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/common_size.dart';
+import 'package:instagram_clone/constants/screen_size.dart';
 import 'package:instagram_clone/widgets/comment.dart';
 import 'package:instagram_clone/widgets/my_progress_indicator.dart';
 import 'package:instagram_clone/widgets/rounded_avatar.dart';
@@ -9,7 +10,7 @@ import 'package:instagram_clone/widgets/rounded_avatar.dart';
 // 피드에 생성될 포스팅의 기본 UI
 class Post extends StatelessWidget {
   final int index;
-  Size size;
+
 
   Post(this.index, {
     Key key,
@@ -17,12 +18,7 @@ class Post extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (size == null) {
-//   미디어쿼리는 현재 실행되는 디바이스의화면 사이즈를 가져온다
-      size = MediaQuery
-          .of(context)
-          .size;
-    }
+
 
 //  왜이걸 사용 하냐면 플러터의 이미지 위젯은 캐시하지 않는다. 메모리 저장하지 않는다
 //  계속 이미지를 새로 생성한다.
