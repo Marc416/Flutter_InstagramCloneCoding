@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:instagram_clone/widgets/sign_in_form.dart';
-import 'package:instagram_clone/widgets/sign_up_form.dart';
+import 'package:instagram_clone/widgets/sign_up_form_.dart';
 
 class FadeStack extends StatefulWidget {
   final int selecteForm;
@@ -17,7 +17,7 @@ class _FadeStackState extends State<FadeStack>
   AnimationController _animationController;
   //로그인와 가입부분을 만들기 위해 리스트화 시키고 스택으로 두가지를 겹쳐 둔다.
   //왜냐하면 스택으로 겹쳐놔야 다른 부분에서 글을 썼을 때 안사라지고 있을 테니까
-  List<Widget> forms = [SignUpForm(), SignInForm()];
+  List<Widget> forms = [SignInForm(), SignUpForm()];
 
   @override
   void initState() {

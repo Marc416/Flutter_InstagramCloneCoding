@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/screens/camera_screen.dart';
 import 'package:instagram_clone/screens/feed_screen.dart';
 import 'package:instagram_clone/screens/profile_screen.dart';
+import 'package:instagram_clone/screens/search_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'constants/screen_size.dart';
@@ -36,9 +37,7 @@ class _HomePageState extends State<HomePage> {
     //Home
     FeedScreen(),
     //Search
-    Container(
-      color: Colors.amberAccent,
-    ),
+    SearchScreen(),
     //Plus
     Container(
       color: Colors.red,

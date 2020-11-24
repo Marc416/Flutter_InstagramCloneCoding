@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/common_size.dart';
 import 'package:instagram_clone/home_page.dart';
+import 'package:instagram_clone/models/firebase_auth_state.dart';
 import 'package:instagram_clone/widgets/or_divider.dart';
+import 'package:provider/provider.dart';
 
 import 'auth_input_decor.dart';
 
@@ -52,6 +54,7 @@ class _SignInFormState extends State<SignInForm> {
             TextFormField(
               cursorColor: Colors.black,
               controller: _pwController,
+              obscureText: true,
               decoration: textInputDecor('Pass Word'),
               validator: (text) {
                 if (text.isNotEmpty && _pwController.text == text)
@@ -78,8 +81,12 @@ class _SignInFormState extends State<SignInForm> {
               height: common_gap,
             ),
             OrDivider(),
+            //페이스북으로 로그인하기
             FlatButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<FirebaseAuthState>(context, listen: false)
+                    .changeFireBaseAuthStatus(FirebaseAuthStatus.signin);
+              },
               //원래 아이콘과 버튼의 컬러가 검은색인데 textColor속성으로 바꿀 수 있음
               // 아마 색상 바꾸는 이름을 잘못 만든거 같다고하심.
               textColor: Colors.blue,
@@ -97,11 +104,23 @@ class _SignInFormState extends State<SignInForm> {
       color: Colors.blue,
       onPressed: () {
         if (_formKey.currentState.validate()) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => HomePage(),
-            ),
+          Provider.of<FirebaseAuthState>(context, listen: false).login(
+            context,
+            email: _emailController.text,
+            password: _pwController.text,
           );
+
+          //of 때문에 리슨하는거 같은데 왜 리슨하는지는 모르겠음.
+          //지금 현재 위젯의 상태를 변화시키려면 리슨을 true해주면된다고함.
+          // Provider.of<FirebaseAuthState>(context, listen: false)
+          //     .changeFireBaseAuthStatus(FirebaseAuthStatus.signin);
+
+          // 프로바이더를 쓰지 않을 때 일반적인 페이지 이동(데이터정보를 저장하지 않을 수 있음)
+          // Navigator.of(context).pushReplacement(
+          //   MaterialPageRoute(
+          //     builder: (context) => HomePage(),
+          //   ),
+          //);
         }
       },
       child: Text(

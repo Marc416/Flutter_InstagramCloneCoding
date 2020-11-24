@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/common_size.dart';
 import 'package:instagram_clone/widgets/fade_stack.dart';
 import 'package:instagram_clone/widgets/sign_in_form.dart';
-import 'package:instagram_clone/widgets/sign_up_form.dart';
+import 'package:instagram_clone/widgets/sign_up_form_.dart';
 
 class AuthScreen extends StatefulWidget {
   @override
@@ -63,7 +63,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextSpan(
-                          text: (selectedForm == 0) ? 'Sign in' : 'Sign up',
+                          text: (selectedForm == 0) ? 'Sign up' : 'Sign in',
                           style: TextStyle(
                               color: Colors.blue, fontWeight: FontWeight.bold),
                         )

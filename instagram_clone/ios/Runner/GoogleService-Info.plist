@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1053495588499-2n4b2821dbog6db1tlgc381oe7quhehp.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1053495588499-2n4b2821dbog6db1tlgc381oe7quhehp</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBuY88fRN2_w00CQDkwwhidyw2X3EYhvtA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1053495588499</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.instagramCloneIphone</string>
+	<key>PROJECT_ID</key>
+	<string>instaclone-papa</string>
+	<key>STORAGE_BUCKET</key>
+	<string>instaclone-papa.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1053495588499:ios:de220a9b493749c8893f66</string>
+	<key>DATABASE_URL</key>
+	<string>https://instaclone-papa.firebaseio.com</string>
+</dict>
+</plist>

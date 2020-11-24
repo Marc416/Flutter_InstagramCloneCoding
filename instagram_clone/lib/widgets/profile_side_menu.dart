@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:instagram_clone/models/firebase_auth_state.dart';
 import 'package:instagram_clone/screens/auth_screen.dart';
+import 'package:provider/provider.dart';
 
 class ProfileSideMenu extends StatelessWidget {
   final double menuWidth;
@@ -29,9 +31,13 @@ class ProfileSideMenu extends StatelessWidget {
                 ),
                 title: Text('Sign Out'),
                 onTap: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => AuthScreen(),),
-                  );
+                  Provider.of<FirebaseAuthState>(context, listen: false)
+                      .signOut();
+
+                  ////밑의 구문은 페이지를 강제로 바꿔 주는 것임 ->프로바이더로 바꿔줘야함
+                  // Navigator.of(context).pushReplacement(
+                  //   MaterialPageRoute(builder: (context) => AuthScreen(),),
+                  // );
                 })
           ],
         ),

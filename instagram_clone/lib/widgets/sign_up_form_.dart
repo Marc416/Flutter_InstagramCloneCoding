@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/common_size.dart';
+import 'package:instagram_clone/models/firebase_auth_state.dart';
 import 'package:instagram_clone/widgets/auth_input_decor.dart';
+import 'package:provider/provider.dart';
 
-import '../home_page.dart';
 import 'or_divider.dart';
 
 class SignUpForm extends StatefulWidget {
   @override
   _SignUpFormState createState() => _SignUpFormState();
 }
+
+//회원가입란
 
 class _SignUpFormState extends State<SignUpForm> {
   //글로벌키가 정확하게 무슨역할을 어떻게 하는지는 잘 모르겟다..
@@ -92,8 +95,12 @@ class _SignUpFormState extends State<SignUpForm> {
               _joinButton(context),
               SizedBox(height: common_gap),
               OrDivider(),
+              //Facebook 로그인
               FlatButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<FirebaseAuthState>(context, listen: false)
+                      .changeFireBaseAuthStatus(FirebaseAuthStatus.signin);
+                },
                 //원래 아이콘과 버튼의 컬러가 검은색인데 textColor속성으로 바꿀 수 있음
                 // 아마 색상 바꾸는 이름을 잘못 만든거 같다고하심.
                 textColor: Colors.blue,
@@ -117,14 +124,21 @@ class _SignUpFormState extends State<SignUpForm> {
         if (_formKey.currentState.validate()) {
           //유효성검사를 모두 통과했다면
           print('Validation Success');
-          //Navigator, of, context 역할찾기
-          //pushReplacement -> 현재 위젯을 삭제하고 다음 위젯을 실행한다.
-          //그냥 push일 경우 현재 위젯 위에 다음 위젯을 실행한다.겹치는 거지.
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) {
-              return HomePage();
-            }),
-          );
+
+
+          //of 때문에 리슨하는거 같은데 왜 리슨하는지는 모르겠음.
+          //지금 현재 위젯의 상태를 변화시키려면 리슨을 true해주면된다고함.
+          Provider.of<FirebaseAuthState>(context, listen: false)
+              .registerUser(context, email: _emailController.text, password: _pwController.text);
+
+          // //Navigator, of, context 역할찾기
+          // //pushReplacement -> 현재 위젯을 삭제하고 다음 위젯을 실행한다.
+          // //그냥 push일 경우 현재 위젯 위에 다음 위젯을 실행한다.겹치는 거지.
+          // Navigator.of(context).pushReplacement(
+          //   MaterialPageRoute(builder: (context) {
+          //     return HomePage();
+          //   }),
+          // );
         }
       },
       child: Text(
