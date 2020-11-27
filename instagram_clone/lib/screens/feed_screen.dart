@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/models/firestore/user_model_state.dart';
+import 'package:instagram_clone/repo/user_network_repository.dart';
 import 'package:instagram_clone/widgets/post.dart';
 
 //피드홈
@@ -26,7 +28,9 @@ class FeedScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             IconButton(
-              onPressed: null,
+              onPressed: (){
+
+              },
               icon: ImageIcon(
 //              애셋의 이미지를 가져오기
                 AssetImage('assets/images/actionbar_camera.png'),
@@ -34,10 +38,12 @@ class FeedScreen extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: null,
+              onPressed: (){
+
+              },
               icon: ImageIcon(
 //              애셋의 이미지를 가져오기
-                AssetImage('assets/images/actionbar_camera.png'),
+                AssetImage('assets/images/direct_message.png'),
                 color: Colors.black87,
               ),
             )

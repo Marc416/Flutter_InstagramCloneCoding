@@ -85,7 +85,7 @@ class _SignInFormState extends State<SignInForm> {
             FlatButton.icon(
               onPressed: () {
                 Provider.of<FirebaseAuthState>(context, listen: false)
-                    .changeFireBaseAuthStatus(FirebaseAuthStatus.signin);
+                    .loginWithFacebook(context);
               },
               //원래 아이콘과 버튼의 컬러가 검은색인데 textColor속성으로 바꿀 수 있음
               // 아마 색상 바꾸는 이름을 잘못 만든거 같다고하심.

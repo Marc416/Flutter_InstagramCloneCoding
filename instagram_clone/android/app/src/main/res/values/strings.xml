@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    app 네임부분은 왜 추가된걸까-->
+    <string name="app_name">Instaclone</string>
+    <string name="facebook_app_id">2772221249762047</string>
+    <string name="fb_login_protocol_scheme">fb2772221249762047</string>
+</resources>

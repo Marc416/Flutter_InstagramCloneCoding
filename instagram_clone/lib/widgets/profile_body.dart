@@ -3,8 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/constants/common_size.dart';
 import 'package:instagram_clone/constants/screen_size.dart';
+import 'package:instagram_clone/models/firestore/user_model_state.dart';
 import 'package:instagram_clone/screens/profile_screen.dart';
 import 'package:instagram_clone/widgets/rounded_avatar.dart';
+import 'package:provider/provider.dart';
 
 class ProfileBody extends StatefulWidget {
   //델리게이트 같은 역할을 하는 것으로 보임. 플러터에서는 Function이라고 하는가봄.
@@ -51,7 +53,7 @@ class _ProfileBodyState extends State<ProfileBody>
           //스크롤 되지 않을 것
           _appbar(),
           //슬리버 스크롤기능으로 ProfileBody위젯은 스크롤 될것
-          _body(),
+          _body(context),
         ],
       ),
     );
@@ -87,7 +89,7 @@ class _ProfileBodyState extends State<ProfileBody>
     );
   }
 
-  Widget _body() {
+  Widget _body(BuildContext context) {
     return Expanded(
       //커스텀스크롤뷰 쓸 때 그리드와 리스트뷰를 혼합해서 써야 할 경우!! 인스타그램 피드처럼!
       child: CustomScrollView(
@@ -128,7 +130,7 @@ class _ProfileBodyState extends State<ProfileBody>
                   )
                 ],
               ),
-              _username(),
+              _username(context),
               _userBio(),
               //에딧버튼
               _editProfileBtn(),
@@ -293,13 +295,22 @@ class _ProfileBodyState extends State<ProfileBody>
     );
   }
 
-  Widget _username() {
+  Widget _username(BuildContext context) {
+    UserModelState userModelState = Provider.of<UserModelState>(context);
+
     return Padding(
       // 패딩 주는데 왜 const를 주는거지?
       // symetric은 양 옆의 간격을 똑같이 줄
       padding: const EdgeInsets.symmetric(horizontal: common_gap),
       child: Text(
-        'username',
+        ///유저 name 이나 model 없으면 빈거보내고 있으면 아래의 이름 내보내기
+        /// 아래의 에러 처리용
+        /// The getter 'username' was called on null.
+        /// Receiver: null
+        /// Tried calling: username
+        userModelState == null || userModelState.userModel == null
+            ? ''
+            : Provider.of<UserModelState>(context).userModel.username,
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
     );
